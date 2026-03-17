@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>あざらし育成ゲーム</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="wave-header">
+        <h1>あざらし育成</h1>
+        <div class="top-info">
+          <span id="clock" class="clock">--:--</span>
+          <button id="toggleClockBtn" class="chip-button">時刻表示: ON</button>
+        </div>
+      </header>
+
+      <main class="play-area" id="playArea">
+        <section class="stats-panel">
+          <h2>ステータス</h2>
+          <div class="stat"><span>空腹</span><div class="bar"><div id="hungerBar"></div></div></div>
+          <div class="stat"><span>幸福</span><div class="bar"><div id="happinessBar"></div></div></div>
+          <div class="stat"><span>スタミナ</span><div class="bar"><div id="staminaBar"></div></div></div>
+          <div class="stat"><span>絆</span><div class="bar"><div id="bondBar"></div></div></div>
+          <p id="behaviorText" class="behavior-text">行動: うろうろ</p>
+        </section>
+
+        <div id="seal" class="seal" role="button" aria-label="あざらし">
+          <div class="seal-body"></div>
+          <div class="seal-face">ʕ•ᴥ•ʔ</div>
+          <div id="reaction" class="reaction">♪</div>
+        </div>
+      </main>
+
+      <nav class="bottom-nav">
+        <button id="foodBtn" class="main-btn">ごはん</button>
+        <button id="trainingBtn" class="main-btn">トレーニング</button>
+        <button id="settingsBtn" class="main-btn">設定</button>
+      </nav>
+    </div>
+
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modalTitle"></h2>
+          <button id="closeModal" class="chip-button">閉じる</button>
+        </div>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
