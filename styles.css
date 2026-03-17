@@ -1,0 +1,183 @@
+:root {
+  --sky: #6ec5ff;
+  --sky-dark: #3f98d1;
+  --ice: #f8fdff;
+  --ice-border: #d8eef9;
+  --accent: #ffcc66;
+  --text: #20435b;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  background: linear-gradient(#b7ebff, #e6f8ff);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 960px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.wave-header {
+  position: relative;
+  background: var(--sky);
+  color: #fff;
+  padding: 20px 24px 32px;
+  border-bottom-left-radius: 50% 20px;
+  border-bottom-right-radius: 50% 20px;
+  overflow: hidden;
+}
+.wave-header::after {
+  content: "";
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: -18px;
+  height: 42px;
+  background: var(--sky-dark);
+  border-radius: 50% 50% 0 0;
+}
+.wave-header h1 { margin: 0; font-size: 1.8rem; position: relative; z-index: 1; }
+.top-info { position: relative; z-index: 1; display: flex; gap: 12px; margin-top: 12px; align-items: center; }
+.clock { font-weight: 700; background: rgba(255,255,255,.3); padding: 6px 10px; border-radius: 999px; }
+
+.play-area {
+  position: relative;
+  flex: 1;
+  margin: 10px 18px;
+  border-radius: 20px;
+  background: var(--ice);
+  border: 4px solid var(--ice-border);
+  overflow: hidden;
+  min-height: 440px;
+}
+
+.stats-panel {
+  width: 280px;
+  margin: 18px;
+  background: rgba(255,255,255,.8);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 8px 20px rgba(47, 143, 189, 0.12);
+}
+.stats-panel h2 { margin: 0 0 10px; font-size: 1.1rem; }
+.stat { margin-bottom: 8px; }
+.stat span { display: inline-block; width: 58px; font-size: .9rem; }
+.bar { display: inline-block; width: calc(100% - 64px); height: 12px; background: #e3f4fb; border-radius: 999px; overflow: hidden; vertical-align: middle; }
+.bar div { height: 100%; width: 50%; background: #76cbe7; transition: width .4s ease; }
+.behavior-text { font-size: .9rem; margin: 12px 0 0; }
+
+.seal {
+  position: absolute;
+  width: 140px;
+  height: 110px;
+  right: 110px;
+  bottom: 95px;
+  cursor: pointer;
+  user-select: none;
+  transform-origin: center;
+  transition: transform .2s ease;
+}
+.seal:active { transform: scale(.96); }
+.seal img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+.reaction {
+  position: absolute;
+  top: -18px;
+  right: 8px;
+  opacity: 0;
+  font-size: 1.4rem;
+}
+.reaction.show {
+  animation: pop .8s ease;
+}
+@keyframes pop {
+  0% { opacity: 0; transform: translateY(8px) scale(.6); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-14px) scale(1.1); }
+}
+
+.seal.walking { animation: bob 1.2s infinite ease-in-out; }
+.seal.sitting { transform: translateY(6px) scale(0.95); }
+.seal.sleeping { filter: brightness(.92); }
+.seal.sleeping::after {
+  content: "Zzz";
+  position: absolute;
+  top: -14px;
+  left: 8px;
+  color: #597385;
+  font-weight: 700;
+}
+.seal.looking { transform: scale(1.03); }
+@keyframes bob { 50% { transform: translateY(-4px); } }
+
+.bottom-nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 12px 18px 20px;
+}
+.main-btn {
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 16px;
+  border: 0;
+  border-radius: 16px;
+  background: #ffe29a;
+  color: #684d17;
+  box-shadow: 0 6px 0 #e3bc61;
+}
+.main-btn:active { transform: translateY(3px); box-shadow: 0 3px 0 #e3bc61; }
+.chip-button {
+  border: 0;
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: #ffffff;
+  color: var(--text);
+  font-size: .85rem;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.hidden { display: none; }
+.modal-content {
+  width: min(680px, 100%);
+  max-height: 80vh;
+  overflow: auto;
+  background: #fff;
+  border-radius: 18px;
+  padding: 16px;
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.card-list { display: grid; gap: 10px; }
+.card {
+  border: 1px solid #d7ebf5;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.small { font-size: .85rem; color: #3f6b84; }
