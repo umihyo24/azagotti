@@ -75,8 +75,8 @@ body {
 
 .seal {
   position: absolute;
-  width: 120px;
-  height: 92px;
+  width: 140px;
+  height: 110px;
   right: 110px;
   bottom: 95px;
   cursor: pointer;
@@ -85,19 +85,11 @@ body {
   transition: transform .2s ease;
 }
 .seal:active { transform: scale(.96); }
-.seal-body {
+.seal img {
   width: 100%;
-  height: 78px;
-  border-radius: 60% 60% 52% 52%;
-  background: #aebdc8;
-  border: 3px solid #8ea3b2;
-}
-.seal-face {
-  position: absolute;
-  top: 25px;
-  left: 18px;
-  font-size: 1.2rem;
-  letter-spacing: .06rem;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
 }
 .reaction {
   position: absolute;
@@ -116,7 +108,7 @@ body {
 }
 
 .seal.walking { animation: bob 1.2s infinite ease-in-out; }
-.seal.sitting .seal-body { height: 72px; border-radius: 54% 54% 45% 45%; }
+.seal.sitting { transform: translateY(6px) scale(0.95); }
 .seal.sleeping { filter: brightness(.92); }
 .seal.sleeping::after {
   content: "Zzz";
